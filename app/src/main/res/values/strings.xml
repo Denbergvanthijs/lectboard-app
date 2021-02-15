@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Portable Whiteboard</string>
+    <string name="drawingAnnouncement">You are drawing on the screen.</string>
+    <string name="canvasContentDescription">Portable Whiteboard allows you to use your android
+        to draw on your PC.</string>
+</resources>
