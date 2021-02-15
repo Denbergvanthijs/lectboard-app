@@ -1,9 +1,9 @@
-package com.example.android.minipaint
+package com.denbergvanthijs.android.lectboard
 
 import android.os.Bundle
 import android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
 import androidx.appcompat.app.AppCompatActivity
-import com.example.minipaint.R
+import com.denbergvanthijs.lectboard.R
 
 /**
  * The main activity

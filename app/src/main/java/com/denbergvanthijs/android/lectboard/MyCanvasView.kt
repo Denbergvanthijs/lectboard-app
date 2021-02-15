@@ -1,4 +1,4 @@
-package com.example.android.minipaint
+package com.denbergvanthijs.android.lectboard
 
 import android.content.Context
 import android.graphics.*
@@ -7,7 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
-import com.example.minipaint.R
+import com.denbergvanthijs.lectboard.R
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
