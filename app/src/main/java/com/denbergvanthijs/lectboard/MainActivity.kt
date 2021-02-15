@@ -1,9 +1,8 @@
-package com.denbergvanthijs.android.lectboard
+package com.denbergvanthijs.lectboard
 
 import android.os.Bundle
 import android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
 import androidx.appcompat.app.AppCompatActivity
-import com.denbergvanthijs.lectboard.R
 
 /**
  * The main activity

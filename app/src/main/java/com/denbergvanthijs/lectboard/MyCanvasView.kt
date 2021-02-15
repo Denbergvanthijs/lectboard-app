@@ -1,4 +1,4 @@
-package com.denbergvanthijs.android.lectboard
+package com.denbergvanthijs.lectboard
 
 import android.content.Context
 import android.graphics.*
@@ -7,11 +7,11 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
-import com.denbergvanthijs.lectboard.R
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.*
+import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.net.URL
 
 
@@ -144,6 +144,7 @@ class MyCanvasView(context: Context) : View(context) {
         val image = stream.toByteArray()
         return image
     }
+
     private fun get() {
         //TODO: rewrite to coroutine
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()

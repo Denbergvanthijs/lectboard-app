@@ -3,4 +3,6 @@
     <string name="drawingAnnouncement">You are drawing on the screen.</string>
     <string name="canvasContentDescription">Portable Whiteboard allows you to use your android
         to draw on your PC.</string>
+    <string name="drawing_button">Start Drawing</string>
+    <string name="MainMenuText">LectBoard</string>
 </resources>
