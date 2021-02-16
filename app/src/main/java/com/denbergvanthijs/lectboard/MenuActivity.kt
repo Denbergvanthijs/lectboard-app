@@ -12,7 +12,7 @@ class MenuActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.button_start_drawing)
         button.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, DrawActivity::class.java)
             startActivity(intent)
         }
     }

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 /**
  * The main activity
  */
-class MainActivity : AppCompatActivity() {
+class DrawActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
