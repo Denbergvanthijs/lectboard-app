@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
+import com.denbergvanthijs.lectboard.MenuActivity.Companion.localIpAdress
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -15,12 +16,8 @@ import java.io.IOException
 import java.net.URL
 import kotlin.math.abs
 
-// Stroke width for the the paint.
 private const val STROKE_WIDTH = 14f
 
-/**
- * Custom view that follows touch events to draw on a canvas.
- */
 class MyCanvasView(context: Context) : View(context) {
     private var path = Path()
 
@@ -132,7 +129,7 @@ class MyCanvasView(context: Context) : View(context) {
     private fun touchUp() {
         // Reset the path so it doesn't get drawn again.
         path.reset()
-        sendPost(bitmapToByteArray())
+        sendPost(bitmapToByteArray(), localIpAdress)
     }
 
     private fun bitmapToByteArray(): ByteArray {
@@ -144,8 +141,8 @@ class MyCanvasView(context: Context) : View(context) {
 
     private fun get() {
         //TODO: rewrite to coroutine
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
+//        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+//        StrictMode.setThreadPolicy(policy)
 
         try {
             val client = OkHttpClient()
@@ -166,7 +163,7 @@ class MyCanvasView(context: Context) : View(context) {
         }
     }
 
-    private fun sendPost(payload: ByteArray) {
+    private fun sendPost(payload: ByteArray, ip: String) {
         //TODO: rewrite to coroutine, post happens on main thread
 //        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
 //        StrictMode.setThreadPolicy(policy)
@@ -174,7 +171,7 @@ class MyCanvasView(context: Context) : View(context) {
         val requestBody = payload.toRequestBody()
         val request = Request.Builder()
                 .method("POST", requestBody)
-                .url("http://192.168.178.66:5000/image")
+                .url("http://$ip:5000/image")
                 .build()
         okHttpClient.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {

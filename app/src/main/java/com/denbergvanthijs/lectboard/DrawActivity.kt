@@ -14,9 +14,5 @@ class DrawActivity : AppCompatActivity() {
         myCanvasView.systemUiVisibility = SYSTEM_UI_FLAG_FULLSCREEN
         myCanvasView.contentDescription = getString(R.string.canvasContentDescription)
         setContentView(myCanvasView)
-
-        val intent = intent
-        val str = intent.getStringExtra("IP")
-        println(str)
     }
 }

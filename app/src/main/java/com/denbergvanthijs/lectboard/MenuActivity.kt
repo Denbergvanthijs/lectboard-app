@@ -7,14 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuActivity : AppCompatActivity() {
+    companion object {
+        var localIpAdress = "192.168.178.66"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        val button: Button = findViewById(R.id.button_start_drawing)
+        val button: Button = findViewById(R.id.MainMenuButton)
         button.setOnClickListener {
+            localIpAdress = MainMenuIPAddress.text.toString()
             val intent = Intent(this, DrawActivity::class.java)
-            intent.putExtra("IP", MainMenuIPAdress.text.toString())
             startActivity(intent)
         }
     }

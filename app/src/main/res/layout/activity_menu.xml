@@ -8,7 +8,7 @@
     tools:context=".MenuActivity">
 
     <Button
-        android:id="@+id/button_start_drawing"
+        android:id="@+id/MainMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/drawing_button"
@@ -26,19 +26,19 @@
         android:text="@string/MainMenuText"
         android:textColor="@color/colorBackground"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_start_drawing"
+        app:layout_constraintBottom_toTopOf="@+id/MainMenuButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/MainMenuIPAdress"
+        android:id="@+id/MainMenuIPAddress"
         android:layout_width="240dp"
         android:layout_height="28dp"
         android:background="@color/colorBackground"
         android:digits="0123456789."
         android:ems="10"
-        android:hint="@string/IPAdressHint"
+        android:hint="@string/IPAddressHint"
         android:importantForAutofill="no"
         android:inputType="number|numberDecimal"
         android:maxLength="15"
@@ -47,7 +47,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_start_drawing"
+        app:layout_constraintTop_toBottomOf="@+id/MainMenuButton"
         app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/MainMenuTextPlease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please fill in your local IPv4-address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainMenuIPAddress"
+        app:layout_constraintVertical_bias="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
