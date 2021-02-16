@@ -30,4 +30,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/MainMenuIPAdress"
+        android:layout_width="240dp"
+        android:layout_height="28dp"
+        android:background="@color/colorBackground"
+        android:digits="0123456789."
+        android:ems="10"
+        android:hint="@string/IPAdressHint"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:maxLength="15"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_start_drawing"
+        app:layout_constraintVertical_bias="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

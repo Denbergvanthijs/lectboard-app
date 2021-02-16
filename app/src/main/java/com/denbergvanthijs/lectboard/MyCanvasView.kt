@@ -13,7 +13,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.net.URL
-
+import kotlin.math.abs
 
 // Stroke width for the the paint.
 private const val STROKE_WIDTH = 14f
@@ -22,8 +22,6 @@ private const val STROKE_WIDTH = 14f
  * Custom view that follows touch events to draw on a canvas.
  */
 class MyCanvasView(context: Context) : View(context) {
-
-    // Holds the path you are currently drawing.
     private var path = Path()
 
     private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
@@ -114,8 +112,8 @@ class MyCanvasView(context: Context) : View(context) {
     }
 
     private fun touchMove() {
-        val dx = Math.abs(motionTouchEventX - currentX)
-        val dy = Math.abs(motionTouchEventY - currentY)
+        val dx = abs(motionTouchEventX - currentX)
+        val dy = abs(motionTouchEventY - currentY)
         if (dx >= touchTolerance || dy >= touchTolerance) {
             // QuadTo() adds a quadratic bezier from the last point,
             // approaching control point (x1,y1), and ending at (x2,y2).
@@ -141,8 +139,7 @@ class MyCanvasView(context: Context) : View(context) {
         val bitmap = extraBitmap
         val stream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream)
-        val image = stream.toByteArray()
-        return image
+        return stream.toByteArray()
     }
 
     private fun get() {
