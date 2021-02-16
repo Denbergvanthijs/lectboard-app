@@ -2,7 +2,6 @@ package com.denbergvanthijs.lectboard
 
 import android.content.Context
 import android.graphics.*
-import android.os.StrictMode
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
