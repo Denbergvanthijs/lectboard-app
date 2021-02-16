@@ -7,7 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
-import com.denbergvanthijs.lectboard.MenuActivity.Companion.localIpAdress
+import com.denbergvanthijs.lectboard.MenuActivity.Companion.localIpAddress
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -129,7 +129,7 @@ class MyCanvasView(context: Context) : View(context) {
     private fun touchUp() {
         // Reset the path so it doesn't get drawn again.
         path.reset()
-        sendPost(bitmapToByteArray(), localIpAdress)
+        sendPost(bitmapToByteArray(), localIpAddress)
     }
 
     private fun bitmapToByteArray(): ByteArray {
