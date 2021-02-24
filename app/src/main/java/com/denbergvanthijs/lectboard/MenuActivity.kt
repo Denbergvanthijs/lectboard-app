@@ -17,11 +17,9 @@ class MenuActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.MainMenuButton)
         button.setOnClickListener {
-            if (MainMenuIPAddress.text.toString() == "") {
-                localIpAddress = "192.168.178.66"
-            } else {
-                localIpAddress = MainMenuIPAddress.text.toString()
-            }
+            localIpAddress = (if (MainMenuIPAddress.text.toString() == "") {
+                "192.168.178.66"
+            } else MainMenuIPAddress.text.toString())
             val intent = Intent(this, DrawActivity::class.java)
             startActivity(intent)
         }
