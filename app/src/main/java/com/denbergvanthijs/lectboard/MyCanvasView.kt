@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 import com.denbergvanthijs.lectboard.MenuActivity.Companion.localIpAddress
-import com.fasterxml.jackson.databind.ObjectMapper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.net.URL
 import kotlin.math.abs
 
 private const val STROKE_WIDTH = 14f
@@ -68,6 +70,10 @@ class MyCanvasView(context: Context) : View(context) {
         // Calculate a rectangular frame around the picture.
         val inset = 40
         frame = Rect(inset, inset, width - inset, height - inset)
+
+        scope.launch {
+            sendPost(bitmapToByteArray(), localIpAddress)
+        }
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -125,11 +131,18 @@ class MyCanvasView(context: Context) : View(context) {
         invalidate()
     }
 
+    val scope = CoroutineScope(Job() + Dispatchers.Main)
+
     private fun touchUp() {
         // Reset the path so it doesn't get drawn again.
         path.reset()
-        sendPost(bitmapToByteArray(), localIpAddress)
+
+        scope.launch {
+            sendPost(bitmapToByteArray(), localIpAddress)
+        }
+
     }
+
 
     private fun bitmapToByteArray(): ByteArray {
         val bitmap = extraBitmap
@@ -138,34 +151,7 @@ class MyCanvasView(context: Context) : View(context) {
         return stream.toByteArray()
     }
 
-    private fun get() {
-        //TODO: rewrite to coroutine
-//        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-//        StrictMode.setThreadPolicy(policy)
-
-        try {
-            val client = OkHttpClient()
-            val url = URL("http://192.168.178.66:5000/data")
-
-            val request = Request.Builder().url(url).get().build()
-            val response = client.newCall(request).execute()
-            val responseBody = response.body!!.string()
-            println("Response Body: $responseBody")
-
-            val mapperAll = ObjectMapper()  // Jackson ObjectMapper
-            val objData = mapperAll.readTree(responseBody)
-            objData.forEachIndexed { index, jsonNode ->
-                println("$index $jsonNode")
-            }
-        } catch (e: Exception) {
-            println("Exception: $e")
-        }
-    }
-
     private fun sendPost(payload: ByteArray, ip: String) {
-        //TODO: rewrite to coroutine, post happens on main thread
-//        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-//        StrictMode.setThreadPolicy(policy)
         val okHttpClient = OkHttpClient()
         val requestBody = payload.toRequestBody()
         val request = Request.Builder()
