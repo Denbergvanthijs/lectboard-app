@@ -1,7 +1,10 @@
 package com.denbergvanthijs.lectboard
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -23,10 +26,10 @@ class MyCanvasView(context: Context) : View(context) {
     private var path = Path()
 
     private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
+    private val drawGridColor = ResourcesCompat.getColor(resources, R.color.colorGridPaint, null)
     private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
-    private lateinit var frame: Rect
 
     // Set up the paint with which to draw.
     private val paint = Paint().apply {
@@ -39,6 +42,16 @@ class MyCanvasView(context: Context) : View(context) {
         strokeJoin = Paint.Join.ROUND // default: MITER
         strokeCap = Paint.Cap.ROUND // default: BUTT
         strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
+    }
+
+    private val gridPaint = Paint().apply {
+        color = drawGridColor
+        isAntiAlias = true
+        isDither = true
+        style = Paint.Style.STROKE
+        strokeJoin = Paint.Join.ROUND
+        strokeCap = Paint.Cap.ROUND
+        strokeWidth = 4f
     }
 
     /**
@@ -67,20 +80,20 @@ class MyCanvasView(context: Context) : View(context) {
         extraCanvas = Canvas(extraBitmap)
         extraCanvas.drawColor(backgroundColor)
 
-        // Calculate a rectangular frame around the picture.
-        val inset = 40
-        frame = Rect(inset, inset, width - inset, height - inset)
+        for (i in 1..9) {
+            extraCanvas.drawLine((i * width / 10).toFloat(), 0f, (i * width / 10).toFloat(), height.toFloat(), gridPaint);
+            extraCanvas.drawLine(0f, (i * height / 10).toFloat(), width.toFloat(), (i * height / 10).toFloat(), gridPaint);
+        }
 
         scope.launch {
             sendPost(bitmapToByteArray(), localIpAddress)
         }
     }
 
+
     override fun onDraw(canvas: Canvas) {
         // Draw the bitmap that has the saved path.
         canvas.drawBitmap(extraBitmap, 0f, 0f, null)
-        // Draw a frame around the canvas.
-        extraCanvas.drawRect(frame, paint)
     }
 
     /**

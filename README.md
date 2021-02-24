@@ -5,7 +5,6 @@ The android app for running LectBoard on the users device.
 ## TODO's
 
 * Send paths/difference instead of the whole bitmap
-* Add lines/grid to the background
 * Add more colours
 * Fix crashes when invalid host is given
 

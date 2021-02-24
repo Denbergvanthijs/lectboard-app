@@ -6,4 +6,5 @@
     <color name="colorAccent">#83A38C</color>
     <color name="colorBackground">#F0F0F0</color>
     <color name="colorPaint">#383838</color>
+    <color name="colorGridPaint">#A9ADB0</color>
 </resources>
