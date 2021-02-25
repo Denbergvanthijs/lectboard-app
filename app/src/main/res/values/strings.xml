@@ -10,4 +10,6 @@
     <string name="textButtonGreen">Green</string>
     <string name="textButtonBlue">Blue</string>
     <string name="textButtonBlack">Black</string>
+    <string name="textButtonSmaller">Smaller</string>
+    <string name="textButtonBigger">Bigger</string>
 </resources>

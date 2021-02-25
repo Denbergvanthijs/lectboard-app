@@ -172,7 +172,7 @@ class MyCanvasView(context: Context) : View(context) {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                println("Response: $response")
+//                println("Response: $response")
             }
         })
     }

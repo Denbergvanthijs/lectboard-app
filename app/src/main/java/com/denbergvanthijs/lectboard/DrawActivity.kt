@@ -18,18 +18,12 @@ class DrawActivity : AppCompatActivity() {
         val colorBlue = ResourcesCompat.getColor(resources, R.color.colorMarkerBlue, null)
         val colorBlack = ResourcesCompat.getColor(resources, R.color.colorBlack, null)
 
-        buttonRed.setOnClickListener {
-            myCanvasView.paint.color = colorRed
-        }
-        buttonGreen.setOnClickListener {
-            myCanvasView.paint.color = colorGreen
-        }
-        buttonBlue.setOnClickListener {
-            myCanvasView.paint.color = colorBlue
-        }
-        buttonBlack.setOnClickListener {
-            myCanvasView.paint.color = colorBlack
-        }
+        buttonRed.setOnClickListener { myCanvasView.paint.color = colorRed }
+        buttonGreen.setOnClickListener { myCanvasView.paint.color = colorGreen }
+        buttonBlue.setOnClickListener { myCanvasView.paint.color = colorBlue }
+        buttonBlack.setOnClickListener { myCanvasView.paint.color = colorBlack }
+        buttonSmaller.setOnClickListener { myCanvasView.paint.strokeWidth -= 1 }
+        buttonBigger.setOnClickListener { myCanvasView.paint.strokeWidth += 1 }
 
     }
 }
