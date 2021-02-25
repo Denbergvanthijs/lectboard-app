@@ -20,28 +20,24 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import kotlin.math.abs
 
-private const val STROKE_WIDTH = 14f
 
 class MyCanvasView(context: Context) : View(context) {
     private var path = Path()
 
-    private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
+    private val drawColor = ResourcesCompat.getColor(resources, R.color.colorOffBlack, null)
     private val drawGridColor = ResourcesCompat.getColor(resources, R.color.colorGridPaint, null)
-    private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
+    private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorOffWhite, null)
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
 
-    // Set up the paint with which to draw.
     private val paint = Paint().apply {
         color = drawColor
-        // Smooths out edges of what is drawn without affecting shape.
         isAntiAlias = true
-        // Dithering affects how colors with higher-precision than the device are down-sampled.
         isDither = true
-        style = Paint.Style.STROKE // default: FILL
-        strokeJoin = Paint.Join.ROUND // default: MITER
-        strokeCap = Paint.Cap.ROUND // default: BUTT
-        strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
+        style = Paint.Style.STROKE
+        strokeJoin = Paint.Join.ROUND
+        strokeCap = Paint.Cap.ROUND
+        strokeWidth = 14f
     }
 
     private val gridPaint = Paint().apply {
