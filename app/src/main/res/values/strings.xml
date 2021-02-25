@@ -6,4 +6,8 @@
     <string name="MainMenuText">LectBoard</string>
     <string name="IPAddressHint">192.168.178.66</string>
     <string name="MainMenuTextPlease">Please fill in your local IPv4-address</string>
+    <string name="textButtonRed">Red</string>
+    <string name="textButtonGreen">Green</string>
+    <string name="textButtonBlue">Blue</string>
+    <string name="textButtonBlack">Black</string>
 </resources>

@@ -24,13 +24,14 @@ import kotlin.math.abs
 class MyCanvasView(context: Context) : View(context) {
     private var path = Path()
 
-    private val drawColor = ResourcesCompat.getColor(resources, R.color.colorOffBlack, null)
+    private val drawColor = ResourcesCompat.getColor(resources, R.color.colorBlack, null)
     private val drawGridColor = ResourcesCompat.getColor(resources, R.color.colorGridPaint, null)
     private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorOffWhite, null)
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
+    private val scope = CoroutineScope(Job() + Dispatchers.Main)
 
-    private val paint = Paint().apply {
+    val paint = Paint().apply {
         color = drawColor
         isAntiAlias = true
         isDither = true
@@ -139,8 +140,6 @@ class MyCanvasView(context: Context) : View(context) {
         // view for those.
         invalidate()
     }
-
-    val scope = CoroutineScope(Job() + Dispatchers.Main)
 
     private fun touchUp() {
         // Reset the path so it doesn't get drawn again.
