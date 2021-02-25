@@ -4,8 +4,9 @@ The android app for running LectBoard on the users device.
 
 ## TODO's
 
+* Change colour buttons to radio button?
+* Change smaller/bigger buttons to slider
 * Send paths/difference instead of the whole bitmap
-* Add more colours
 * Fix crashes when invalid host is given
 
 ## Getting started
